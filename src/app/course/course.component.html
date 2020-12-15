@@ -6,6 +6,7 @@
       </mat-card-header>
       <mat-card-content>
         <!-- COURSES LIST -->
+        <!-- Directive ngFor-->
         <mat-list>
           <mat-list-item
             *ngFor="let course of courses"
@@ -17,12 +18,14 @@
             </p>
           </mat-list-item>
         </mat-list>
+        <!-- Directive ngFor-->
       </mat-card-content>
     </mat-card>
   </div>
 
   <div class="course-details">
     <mat-card>
+      <!--Directive ngIf-->
       <mat-card-header>
         <mat-card-title>
           <span *ngIf="currentCourse; else elseBlock">
@@ -32,8 +35,12 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
+        <span *ngIf="currentCourse">
+          {{ currentCourse | json }}
+        </span>
         <!-- COURSE FORM -->
       </mat-card-content>
+      <!--Directive ngIf-->
       <mat-card-actions>
         <!-- COURSE ACTIONS -->
       </mat-card-actions>

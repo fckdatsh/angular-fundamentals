@@ -40,5 +40,6 @@ export class CourseComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  // Directives -ngIf/ngFor- //
   selectCourse = (course) => (this.currentCourse = course);
 }
