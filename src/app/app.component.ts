@@ -14,6 +14,6 @@ export class AppComponent {
   isAuthenticated = true;
 
   // One/Two way data binding -> check app.modules to see ngModel error in first class
-  themeColor = 'red';
+  // themeColor = 'red';
   constructor() {}
 }

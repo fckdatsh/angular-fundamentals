@@ -8,9 +8,17 @@ import { CourseComponent } from './course/course.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
+import { CourseListComponent } from './course/course-list/course-list.component';
+import { CourseDetailsComponent } from './course/course-details/course-details.component';
 
 @NgModule({
-  declarations: [AppComponent, CourseComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    CourseComponent,
+    HomeComponent,
+    CourseListComponent,
+    CourseDetailsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
