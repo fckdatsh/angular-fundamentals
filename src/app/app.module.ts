@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CourseComponent } from './course/course.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, CourseComponent, HomeComponent],
@@ -15,6 +16,9 @@ import { MaterialModule } from './material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    // ngModel -> error
+    //error NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'.
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

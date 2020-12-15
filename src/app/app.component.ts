@@ -12,5 +12,8 @@ export class AppComponent {
     { path: '/courses', icon: 'view_list', title: 'Courses' },
   ];
   isAuthenticated = true;
+
+  // One/Two way data binding -> check app.modules to see ngModel error in first class
+  themeColor = 'red';
   constructor() {}
 }
