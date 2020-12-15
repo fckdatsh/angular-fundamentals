@@ -6,6 +6,17 @@
       </mat-card-header>
       <mat-card-content>
         <!-- COURSES LIST -->
+        <mat-list>
+          <mat-list-item
+            *ngFor="let course of courses"
+            (click)="selectCourse(course)"
+          >
+            <h3 matLine>{{ course.title }}</h3>
+            <p matLine>
+              {{ course.description }}
+            </p>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
     </mat-card>
   </div>
@@ -13,7 +24,12 @@
   <div class="course-details">
     <mat-card>
       <mat-card-header>
-        <mat-card-title> Select Course </mat-card-title>
+        <mat-card-title>
+          <span *ngIf="currentCourse; else elseBlock">
+            {{ currentCourse.title | titlecase }}
+          </span>
+          <ng-template #elseBlock> Select Course </ng-template>
+        </mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <!-- COURSE FORM -->
