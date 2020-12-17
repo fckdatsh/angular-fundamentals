@@ -5,6 +5,7 @@ import { Course } from 'src/app/models/course/Course';
   providedIn: 'root'
 })
 export class CourseService {
+  // inject http module
   courses: Course[] = [
     {
       id: 1,
