@@ -28,7 +28,7 @@ import { CourseDetailsComponent } from './course/course-details/course-details.c
     //error NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'.
     FormsModule,
   ],
-  providers: [],
+  providers: [CourseComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

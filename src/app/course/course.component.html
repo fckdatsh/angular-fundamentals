@@ -16,6 +16,7 @@
             <p matLine>
               {{ course.description }}
             </p>
+            <button mat-icon-button (click)="deleteCourse(course)"><mat-icon>delete</mat-icon></button>
           </mat-list-item>
         </mat-list>
         <!-- Directive ngFor-->
@@ -25,7 +26,7 @@
 
   <div class="course-details">
     <mat-card>
-      <form #form="ngForm" (submit)="saveCourse()">
+      <form #form="ngForm" (submit)="saveCourse(currentCourse)">
       <mat-card-header>
         <mat-card-title>
           <span *ngIf="currentCourse.id; else elseBlock">

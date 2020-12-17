@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/models/course/Course';
+import { CourseService } from '../shared/services/course.service';
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -7,44 +8,19 @@ import { Course } from 'src/app/models/course/Course';
 })
 export class CourseComponent implements OnInit {
   currentCourse: Course;
-  courses = [
-    {
-      id: 1,
-      title: 'Angular Fundamentals',
-      description: 'Learn the fundamentals of Angular',
-      percentComplete: 22,
-      favorite: true,
-    },
-    {
-      id: 2,
-      title: 'React Fundamentals',
-      description: 'Learn the fundamentals of React',
-      percentComplete: 0,
-      favorite: false,
-    },
-    {
-      id: 3,
-      title: 'Vue Fundamentals',
-      description: 'Learn the fundamentals of Vue',
-      percentComplete: 22,
-      favorite: true,
-    },
-    {
-      id: 4,
-      title: 'Svelte Fundamentals',
-      description: 'Learn the fundamentals of Svelte',
-      percentComplete: 22,
-      favorite: false,
-    },
-  ];
-  constructor() {}
+  courses: Course[];
+  constructor(private courseService: CourseService) {}
   //Lifecycle -> ngOnInit, ngOnChanges, ngOnDestroy //
   ngOnInit(): void {
-    this.resetSelectedCourse();
+    this.reloadCourses()
   }
   // Directives -ngIf/ngFor- //
   selectCourse = (course) => (this.currentCourse = course);
-
+  loadCourses = () => this.courses = this.courseService.all();
+  reloadCourses = () => {
+    this.resetSelectedCourse();
+    this.loadCourses()
+  }
   // template-forms //
   resetSelectedCourse = () => {
     const emptyCourse = {
@@ -60,7 +36,16 @@ export class CourseComponent implements OnInit {
   cancel = () => {
     this.resetSelectedCourse();
   }
-  saveCourse = () => {
-    console.log('Course Saved!')
+  saveCourse = (course: Course) => {
+    if(course.id){
+      this.courseService.update(course);
+    }else{
+      this.courseService.create(course);
+    }
+    this.reloadCourses();
+  }
+  deleteCourse = (course: Course) => {
+    this.courseService.delete(course.id);
+    this.reloadCourses();
   }
 }
