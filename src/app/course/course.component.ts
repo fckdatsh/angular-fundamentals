@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Course } from 'src/app/models/course/Course';
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -38,7 +38,7 @@ export class CourseComponent implements OnInit {
     },
   ];
   constructor() {}
-
+  //Lifecycle -> ngOnInit, ngOnChanges, ngOnDestroy //
   ngOnInit(): void {
     this.resetSelectedCourse();
   }
@@ -50,10 +50,17 @@ export class CourseComponent implements OnInit {
     const emptyCourse = {
       id: null,
       title: '',
-      decription: '',
+      description: '',
       percentComplete: 0,
       favorite: false,
     };
     this.currentCourse = emptyCourse;
   };
+
+  cancel = () => {
+    this.resetSelectedCourse();
+  }
+  saveCourse = () => {
+    console.log('Course Saved!')
+  }
 }
