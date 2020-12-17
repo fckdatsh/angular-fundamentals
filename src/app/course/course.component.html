@@ -25,22 +25,29 @@
 
   <div class="course-details">
     <mat-card>
-      <!--Directive ngIf-->
       <mat-card-header>
         <mat-card-title>
-          <span *ngIf="currentCourse; else elseBlock">
+          <span *ngIf="currentCourse.id; else elseBlock">
             {{ currentCourse.title | titlecase }}
           </span>
           <ng-template #elseBlock> Select Course </ng-template>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <span *ngIf="currentCourse">
+        <!-- <span *ngIf="currentCourse">
           {{ currentCourse | json }}
-        </span>
+        </span> -->
         <!-- COURSE FORM -->
+        <form *ngIf="currentCourse.id" #form="ngForm">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="title"
+              [(ngModel)]="currentCourse.title"
+            />
+          </mat-form-field>
+        </form>
       </mat-card-content>
-      <!--Directive ngIf-->
       <mat-card-actions>
         <!-- COURSE ACTIONS -->
       </mat-card-actions>

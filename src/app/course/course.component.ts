@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
-  currentCourse: object;
+  currentCourse: Course;
   courses = [
     {
       id: 1,
@@ -39,7 +39,21 @@ export class CourseComponent implements OnInit {
   ];
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.resetSelectedCourse();
+  }
   // Directives -ngIf/ngFor- //
   selectCourse = (course) => (this.currentCourse = course);
+
+  // template-forms //
+  resetSelectedCourse = () => {
+    const emptyCourse = {
+      id: null,
+      title: '',
+      decription: '',
+      percentComplete: 0,
+      favorite: false,
+    };
+    this.currentCourse = emptyCourse;
+  };
 }
