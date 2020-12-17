@@ -10,6 +10,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { CourseListComponent } from './course/course-list/course-list.component';
 import { CourseDetailsComponent } from './course/course-details/course-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CourseDetailsComponent } from './course/course-details/course-details.c
     // ngModel -> error
     //error NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'.
     FormsModule,
+    HttpClientModule
   ],
   providers: [CourseComponent],
   bootstrap: [AppComponent],

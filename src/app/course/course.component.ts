@@ -12,12 +12,13 @@ export class CourseComponent implements OnInit {
   constructor(private courseService: CourseService) {}
   //Lifecycle -> ngOnInit, ngOnChanges, ngOnDestroy //
   ngOnInit(): void {
-    this.reloadCourses()
+    this.refreshCourses();
   }
   // Directives -ngIf/ngFor- //
   selectCourse = (course) => (this.currentCourse = course);
-  loadCourses = () => this.courses = this.courseService.all();
-  reloadCourses = () => {
+  loadCourses = () => this.courseService.all().subscribe((courses: Course[]) => this.courses = courses);
+  refreshCourses = () => {
+    debugger
     this.resetSelectedCourse();
     this.loadCourses()
   }
@@ -37,15 +38,14 @@ export class CourseComponent implements OnInit {
     this.resetSelectedCourse();
   }
   saveCourse = (course: Course) => {
+    debugger
     if(course.id){
-      this.courseService.update(course);
+      this.courseService.update(course).subscribe(res => this.loadCourses());
     }else{
-      this.courseService.create(course);
+      this.courseService.create(course).subscribe(res => this.loadCourses());
     }
-    this.reloadCourses();
   }
   deleteCourse = (course: Course) => {
-    this.courseService.delete(course.id);
-    this.reloadCourses();
+    this.courseService.delete(course.id).subscribe(res => this.refreshCourses());
   }
 }
